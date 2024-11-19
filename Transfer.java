@@ -63,6 +63,32 @@ public class Transfer {
 
   public void addItems(int listNumber) {
 
+    /* Food pears = new Food("Pears",20, true);
+    Food hotSauce = new Food("Hot Sauce", 5, false);
+    Food chocolate = new Food("Chocolate", 30, false);
+
+    Parts copperTube = new Parts("Copper Tube",50,10053);
+    Parts kevlarStrap = new Parts("Kevlar Strap",30,10040);
+    Parts titaniumBolts = new Parts("Titanium Bolts", 45, 10032);
+
+    Supplies sleepMask = new Supplies("Sleep Mask", 10);
+    Supplies book = new Supplies("Book", 5);
+    Supplies flute = new Supplies("Flute", 1);
+
+
+    foodList.add(pears);
+    foodList.add(hotSauce);
+    foodList.add(chocolate);
+
+    partsList.add(copperTube);
+    partsList.add(kevlarStrap);
+    partsList.add(titaniumBolts);
+
+    suppliesList.add(sleepMask);
+    suppliesList.add(book);
+    suppliesList.add(flute); */
+
+
     /*    STEP 2
     *
     *     In this method, listNumber is how we identify which 
@@ -100,12 +126,10 @@ public class Transfer {
       Food newFoodItem = new Food(name, qty, perishable);
 
 
-      /* Use the newFoodItem here and enter it into our foodList.
-      *  Print to make sure it was successful
-      */
+
       foodList.add(newFoodItem);
       System.out.println("Food added to list. " + foodList.getLast());
-      //DONE
+
 
     } else if(listNumber == 2) { // Add to Parts list
 
@@ -118,12 +142,10 @@ public class Transfer {
 
       Parts newPartsItem = new Parts(name, qty, pn);
 
-      /* Use the newPartsItem here and enter it into our partsList.
-      *  Print to make sure it was successful
-      */
+
       partsList.add(newPartsItem);
       System.out.println("Part added to list. " + partsList.getLast());
-      //Done
+
     } else { // Add to Supplies list
 
       System.out.print("Supplies name: ");
@@ -133,12 +155,10 @@ public class Transfer {
 
       Supplies newSuppliesItem = new Supplies(name, qty);
 
-      /* Use the newSuppliesItem here and enter it into our suppliesList.
-      *  Print to make sure it was successful
-      */
+
       suppliesList.add(newSuppliesItem);
       System.out.println("Supplies added to list. " + suppliesList.getLast());
-      //DONE
+
     }
   }
 
@@ -158,6 +178,10 @@ public class Transfer {
   *            Food/Parts/Supplies
   */
 
+  Inventory<Food> foodInventory = new Inventory<Food>();
+  Inventory<Parts> partsInventory = new Inventory<Parts>();
+  Inventory<Supplies> suppliesInventory = new Inventory<Supplies>();
+
   public void removeItems(int listNumber) {
 
     /*    STEP 6
@@ -166,6 +190,7 @@ public class Transfer {
     *     methods searchByName() and List method remove()
     */
 
+
     // These below gather the String name for our searchByName() method
     Scanner keyboard = new Scanner(System.in);
     System.out.print("\nName of Item to be Removed: ");
@@ -173,26 +198,28 @@ public class Transfer {
 
     if(listNumber == 1) { // Food
 
-      /* This is where you will use our generic method searchByName()
-      *  and List method remove() for our foodList
-      */ 
-      System.out.println("Remove items for foodList not implemented yet."); 
+     int indexOfItem = foodInventory.searchByName(foodList, name);
+      if (indexOfItem != -1){
+        System.out.println("Removing item number " + (indexOfItem + 1) +" From the list: " + name);
+        foodList.remove(indexOfItem);
+      }
 
 
     } else if(listNumber == 2) { // Parts
 
-      /* This is where you will use our generic method searchByName()
-      *  and List method remove() for our partsList
-      */  
-      System.out.println("Remove items for partsList not implemented yet."); 
-
+      int indexOfItem = partsInventory.searchByName(partsList, name);
+      if (indexOfItem != -1){
+        System.out.println("Removing item number " + (indexOfItem + 1) +" From the list: " + name);
+        partsList.remove(indexOfItem);
+      }
 
     } else if(listNumber == 3) { // Supplies
-      
-      /* This is where you will use our generic method searchByName()
-      *  and List method remove() for our suppliesList
-      */
-      System.out.println("Remove items for suppliesList not implemented yet.");
+
+      int indexOfItem = suppliesInventory.searchByName(suppliesList, name);
+      if (indexOfItem != -1){
+        System.out.println("Removing item number " + (indexOfItem + 1) +" From the list: " + name);
+        suppliesList.remove(indexOfItem);
+      }
 
     }
   }
