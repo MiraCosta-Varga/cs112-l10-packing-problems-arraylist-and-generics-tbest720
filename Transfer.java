@@ -1,5 +1,8 @@
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Transfer {
 
@@ -9,7 +12,6 @@ public class Transfer {
   Parts[] partsArray = setup.getPartsArray();
   Supplies[] suppliesArray = setup.getSuppliesArray();
   // **** Sets up our arrays, do not edit ****
-
 
   /*  STEP 1
   *   
@@ -29,7 +31,13 @@ public class Transfer {
   *
   */
 
+  ArrayList<Food> foodList = new ArrayList<Food>(10);
+  ArrayList<Parts> partsList = new ArrayList<Parts>(10);
+  ArrayList<Supplies>  suppliesList = new ArrayList<Supplies>(10);
+  //DONE
+
   public Transfer() {
+
 
     /*  
     *   Transfer all the data from the array's to our new ArrayList's here
@@ -40,6 +48,15 @@ public class Transfer {
     *   You can use a for-loop to transfer all our items, or import
     *   java.util.Arrays and use the Arrays.asList() method
     */
+    List<Food> newFoodList = Arrays.asList(foodArray);
+    List<Parts> newPartsList = Arrays.asList(partsArray);
+    List<Supplies> newSuppliesList = Arrays.asList(suppliesArray);
+
+    foodList.addAll(newFoodList);
+    partsList.addAll(newPartsList);
+    suppliesList.addAll(newSuppliesList);
+    //DONE
+
 
   }
 
@@ -86,6 +103,9 @@ public class Transfer {
       /* Use the newFoodItem here and enter it into our foodList.
       *  Print to make sure it was successful
       */
+      foodList.add(newFoodItem);
+      System.out.println("Food added to list. " + foodList.getLast());
+      //DONE
 
     } else if(listNumber == 2) { // Add to Parts list
 
@@ -101,7 +121,9 @@ public class Transfer {
       /* Use the newPartsItem here and enter it into our partsList.
       *  Print to make sure it was successful
       */
-
+      partsList.add(newPartsItem);
+      System.out.println("Part added to list. " + partsList.getLast());
+      //Done
     } else { // Add to Supplies list
 
       System.out.print("Supplies name: ");
@@ -114,7 +136,9 @@ public class Transfer {
       /* Use the newSuppliesItem here and enter it into our suppliesList.
       *  Print to make sure it was successful
       */
-
+      suppliesList.add(newSuppliesItem);
+      System.out.println("Supplies added to list. " + suppliesList.getLast());
+      //DONE
     }
   }
 
@@ -240,13 +264,6 @@ public class Transfer {
   // Will print our lists in a table once we have created them
   public void printLists() {
 
-    
-    // Erase the below print message once ArrayLists have been made
-    System.out.println("\nLists do not exist yet to print!!");
-    /* Once you have created your three lists in Step 1, erase this comment
-    
-
-
     if(foodList.isEmpty() && partsList.isEmpty() && suppliesList.isEmpty()) {
       System.out.printf("\n%19s", "No objects found in lists.");
     } 
@@ -288,6 +305,5 @@ public class Transfer {
     }
 
 
-    Once you have created your lists, erase this comment */
   }
 }
