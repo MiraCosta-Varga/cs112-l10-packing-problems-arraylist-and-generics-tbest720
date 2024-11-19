@@ -1,13 +1,33 @@
-public class Inventory {
+import java.util.List;
 
-	/*     STEP 3 
-	*        
-	*      Create this bounded type generic class with everything you 
-	*      would expect in a class (instance variable, constructor,
-	*      get/set methods) and then make two additional generic methods:
-	*
-	*      Go to Transfer.java for STEP 4
-	*/
+public class Inventory <T extends Supplies>{
+	/*     STEP 3
+	 *
+	 *      Create this bounded type generic class with everything you
+	 *      would expect in a class (instance variable, constructor,
+	 *      get/set methods) and then make two additional generic methods:
+	 *
+	 *      Go to Transfer.java for STEP 4
+	 */
+	private T t;
+
+	public Inventory() {
+
+	}
+
+	public Inventory(T t) {
+		this.t = t;
+	}
+
+	public void setT(T t) {
+		this.t = t;
+	}
+
+	public T getT(){
+		return t;
+	}
+
+
 
 	/*     STEP 5
 	*
@@ -20,6 +40,20 @@ public class Inventory {
 	*      input String "name", use the indexOf() method to return the 
 	*      index. If no match is found, return -1. 
 	*/
+	public int searchByName(List<T> inputList, String name) {
+		name = name.trim();
+		int index = -1;
+		for (int i = 0; i < inputList.size(); i++) {
+			if (inputList.get(i).getName().equalsIgnoreCase(name)) {
+				index = inputList.indexOf(inputList.get(i));
+			}
+		}
+		if(index == -1){
+			System.out.println("No such item");
+		}
+		return index;
+
+	}
 
 
 	/*     STEP 7:
@@ -43,5 +77,27 @@ public class Inventory {
 	*      match the quantity in the list, then update using .setQuantity
 	*      and return the object with the new quantity.
 	*/
+public T checkQty(List<T> inputList, String name ,int qty) {
+	int index = searchByName(inputList,name);
+
+
+	if(index == -1){
+		return null;
+	} else {
+		if (qty == inputList.get(index).getQuantity()) {
+			System.out.println("The qty matches, no changes made.");
+			return inputList.get(index);
+		} else {
+			inputList.get(index).setQuantity(qty);
+			System.out.println("setting qty of " + inputList.get(index).getName() + " to " + qty + ".");
+			return inputList.get(index);
+		}
+
+
+	}
+
+
+}
+
 
 }
