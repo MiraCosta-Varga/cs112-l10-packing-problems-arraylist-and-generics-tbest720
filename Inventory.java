@@ -77,5 +77,27 @@ public class Inventory <T extends Supplies>{
 	*      match the quantity in the list, then update using .setQuantity
 	*      and return the object with the new quantity.
 	*/
+public T checkQty(List<T> inputList, String name ,int qty) {
+	int index = searchByName(inputList,name);
+
+
+	if(index == -1){
+		return null;
+	} else {
+		if (qty == inputList.get(index).getQuantity()) {
+			System.out.println("The qty matches, no changes made.");
+			return inputList.get(index);
+		} else {
+			inputList.get(index).setQuantity(qty);
+			System.out.println("setting qty of " + inputList.get(index).getName() + " to " + qty + ".");
+			return inputList.get(index);
+		}
+
+
+	}
+
+
+}
+
 
 }

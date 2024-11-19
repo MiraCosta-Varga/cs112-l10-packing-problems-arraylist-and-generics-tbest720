@@ -236,10 +236,10 @@ public class Transfer {
 
   public void editQuantity(int listNumber) {
       
-    /*    STEP 9
+    /*    STEP 8
     *
     *     Use our generic objects to access the generic method 
-    *     checkQty() we wrote in Inventory in STEP 8. Make sure 
+    *     checkQty() we wrote in Inventory in STEP 7. Make sure
     *     we edit the correct list with awareness of the listNumber.    
     */
 
@@ -252,25 +252,16 @@ public class Transfer {
 
     if(listNumber == 1) { // Food
 
-      /* This is where you will use our generic method checkQty()
-      *  for our foodList.
-      */
-      System.out.println("Edit Quantity for foodList not implemented yet.");
+      Food foodTemp = foodInventory.checkQty(foodList, name, desiredQty);
 
+    } else if (listNumber == 2) { // Parts
 
-    } else if(listNumber == 2) { // Parts
-
-      /* This is where you will use our generic method checkQty()
-      *  for our partsList.
-      */
-      System.out.println("Edit Quantity for partsList not implemented yet.");
-
+      Parts partTemp = partsInventory.checkQty(partsList, name, desiredQty);
 
     } else if(listNumber == 3) { // Supplies
 
-      /* This is where you will use our generic method checkQty()
-      *  for our suppliesList.
-      */
+      Supplies suppTemp = suppliesInventory.checkQty(suppliesList, name, desiredQty);
+
       System.out.println("Edit Quantity for suppliesList not implemented yet.");
 
     }
